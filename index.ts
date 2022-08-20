@@ -12,15 +12,15 @@ let intervalId = setInterval(() => {
   counter = counter + 1;
 
   if (counter == 20) {
-    counter = 0;
     descanso = descanso + 1;
-  }
-  if (descanso == 10) {
-    descanso = 0;
-    ciclo = ciclo + 1;
-  }
-  if (ciclo == 8) {
-    ciclo = 0;
+    counter = 0;
+    if (descanso == 10) {
+      ciclo = ciclo + 1;
+      descanso = 0;
+      if (ciclo == 8) {
+        ciclo = 0;
+      }
+    }
   }
 
   let counterDiv = document.getElementById('app.counter');
