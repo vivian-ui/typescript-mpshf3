@@ -9,8 +9,8 @@ let counter: number = 0;
 let intervalId = setInterval(() => {
   counter = counter + 1;
 
-  if (counter == 20) {
-    counter = 0;
+  if (counter == 21) {
+    counter = 1;
   }
 
   let counterDiv = document.getElementById('app.counter');
