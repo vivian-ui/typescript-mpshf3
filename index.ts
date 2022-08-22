@@ -1,18 +1,28 @@
-// Import stylesheets
-import './style.css';
+let title = 'My Tabata Timer';
+document.getElementById('app').innerHTML = title;
 
-// Write TypeScript code!
-let title: string = 'My App';
-document.getElementById('app.title').innerHTML = title;
-let counter: number = 0;
-
+let action = '-';
+let round = 0;
+let second = 5;
 let intervalId = setInterval(() => {
-  counter = counter + 1;
-
-  if (counter == 21) {
-    counter = 1;
+  if (round < 1) action = 'PREPARE';
+  else if (round > 8) action = 'DONE!';
+  else if (second > 10) action = 'DO IT!!!';
+  else action = 'REST!';
+  document.getElementById('app-action').innerHTML = action;
+  if (round >= 1 && round <= 8) {
+    document.getElementById('app-round').innerHTML = round.toString();
+  } else {
+    document.getElementById('app-round').innerHTML = '-';
   }
-
-  let counterDiv = document.getElementById('app.counter');
-  counterDiv.innerHTML = counter.toString();
-}, 100);
+  if (round <= 8) {
+    document.getElementById('app-time').innerHTML = second.toString() + 's';
+  } else {
+    document.getElementById('app-time').innerHTML = '-';
+  }
+  second -= 1;
+  if (second == 0) {
+    round += 1;
+    second = 30;
+  }
+}, 1000);
